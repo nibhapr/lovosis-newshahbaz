@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_DOMAIN=lovosis.in
+      - NEXTAUTH_URL=https://lovosis.in
+      - MONGODB_URI=${MONGODB_URI}
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ./.next/static/videos:/app/.next/static/videos:rw
+    restart: always
