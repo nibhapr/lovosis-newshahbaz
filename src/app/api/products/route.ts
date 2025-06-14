@@ -160,7 +160,7 @@ export async function PUT(request: Request) {
       navbarCategoryId: values.navbarCategoryId,
       categoryId: values.categoryId || undefined,
       subcategoryId: values.subcategoryId || undefined,
-      catalogImage: values.catalogImage || null,
+      catalogImages: values.catalogImages || [],
     };
     // Update the product
     const product = await Product.findByIdAndUpdate(

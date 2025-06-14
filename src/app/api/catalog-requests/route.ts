@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db';
 import CatalogRequest from '@/app/models/CatalogRequest';
+import { checkAuth } from '@/lib/auth';
 
 export async function GET() {
   try {
@@ -19,6 +20,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     await connectDB();
+    await checkAuth(request);
     const data = await request.json();
 
     // Validate required fields
