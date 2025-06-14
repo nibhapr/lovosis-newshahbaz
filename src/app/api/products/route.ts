@@ -73,6 +73,7 @@ export async function POST(request: Request) {
       categoryId,
       subcategoryId,
       catalogImage,
+      catalogImages
     } = data;
 
     if (!name || !navbarCategoryId) {
@@ -94,6 +95,7 @@ export async function POST(request: Request) {
       categoryId: categoryId || undefined,
       subcategoryId: subcategoryId || undefined,
       catalogImage: catalogImage || null,
+      catalogImages: catalogImages || [],
     };
 
     console.log("Creating product with data:", productData);
