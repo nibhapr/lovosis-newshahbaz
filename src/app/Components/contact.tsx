@@ -74,63 +74,63 @@ export default function Contact() {
           <ContactCard
             icon={<IoLocationSharp className="w-full h-full" />}
             title="Visit Us"
-            content={`<a href="https://www.google.com/maps?q=4-72/2,+Swathi+Building,+3rd+Floor,+Opp.+Singapura+Garden,+1st+Main+Lakshmipura+Road,+Abbigere,+Bengaluru,+Karnataka+560090" target="_blank" class="hover:text-black">4-72/2, Swathi Building,<br/>3rd Floor, Opp. Singapura Garden,<br/>1st Main Lakshmipura Road,<br/>Abbigere, Bengaluru,<br/>Karnataka 560090</a>`}
+            content={<a href="https://www.google.com/maps?q=4-72/2,+Swathi+Building,+3rd+Floor,+Opp.+Singapura+Garden,+1st+Main+Lakshmipura+Road,+Abbigere,+Bengaluru,+Karnataka+560090" target="_blank" className="hover:text-black">4-72/2, Swathi Building,<br/>3rd Floor, Opp. Singapura Garden,<br/>1st Main Lakshmipura Road,<br/>Abbigere, Bengaluru,<br/>Karnataka 560090</a>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<FaGoogle className="w-full h-full" />}
             title="View on Google Maps"
-            content={`<a href="https://www.google.com/maps/place/Lovosis+Technology+Private+Limited/@12.9768,77.5178,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae3d8a1d9f5b5f:0x1f8e3b3b3b3b3b3b!8m2!3d12.9768!4d77.5178!16s%2Fg%2F11b8f8f8f8?entry=ttu" class="hover:text-black">View 3D Location</a>`}
+            content={<a href="https://www.google.com/maps/place/Lovosis+Technology+Private+Limited/@12.9768,77.5178,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae3d8a1d9f5b5f:0x1f8e3b3b3b3b3b3b!8m2!3d12.9768!4d77.5178!16s%2Fg%2F11b8f8f8f8?entry=ttu" className="hover:text-black">View 3D Location</a>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<SiGmail className="w-full h-full" />}
             title="Email Us"
-            content={`<a href="mailto:info@lovosis.in" class="hover:text-black">info@lovosis.in</a><br/><a href="mailto:lovosist@gmail.com" class="hover:text-black">lovosist@gmail.com</a>`}
+            content={<><a href="mailto:info@lovosis.in" className="hover:text-black">info@lovosis.in</a><br/><a href="mailto:lovosist@gmail.com" className="hover:text-black">lovosist@gmail.com</a></>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<BsTelephoneFill className="w-full h-full" />}
             title="Call Us"
-            content={`<a href="tel:+917012970281" class="hover:text-black">+91 7012970281</a><br/><a href="tel:+919747745544" class="hover:text-black">+91 9747745544</a>`}
+            content={<><a href="tel:+917012970281" className="hover:text-black">+91 7012970281</a><br/><a href="tel:+919747745544" className="hover:text-black">+91 9747745544</a></>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<FaWhatsapp className="w-full h-full" />}
             title="WhatsApp Us"
-            content={`<a href="https://wa.me/917012970281" class="hover:text-black">+91 7012970281</a><br/><a href="https://wa.me/919747745544" class="hover:text-black">+91 9747745544</a>`}
+            content={<><a href="https://wa.me/917012970281" className="hover:text-black">+91 7012970281</a><br/><a href="https://wa.me/919747745544" className="hover:text-black">+91 9747745544</a></>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<FaInstagram className="w-full h-full" />}
             title="Follow on Instagram"
-            content={`<a href="https://www.instagram.com/lovosis_technology_private_ltd" class="hover:text-black">Lovosis Technology Private Limited</a>`}
+            content={<a href="https://www.instagram.com/lovosis_technology_private_ltd" className="hover:text-black">Lovosis Technology Private Limited</a>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<FaThreads className="w-full h-full" />}
             title="Follow on Threads"
-            content={`<a href="https://www.threads.net/@lovosis_technology_private_ltd" class="hover:text-black">Lovosis Technology Private Limited</a>`}
+            content={<a href="https://www.threads.net/@lovosis_technology_private_ltd" className="hover:text-black">Lovosis Technology Private Limited</a>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<FaLinkedinIn className="w-full h-full" />}
             title="Connect on LinkedIn"
-            content={`<a href="https://in.linkedin.com/company/lovosis-technology-private-limited" class="hover:text-black">Lovosis Technology Private Limited</a>`}
+            content={<a href="https://in.linkedin.com/company/lovosis-technology-private-limited" className="hover:text-black">Lovosis Technology Private Limited</a>}
             bgColor="bg-gray-100"
             textColor="text-black"
           />
           <ContactCard
             icon={<FaYoutube className="w-full h-full" />}
             title="Subscribe on YouTube"
-            content={`<a href="https://www.youtube.com/@LovosisTechnology" class="hover:text-black">Lovosis Technology Private Limited</a>`}
+            content={<a href="https://www.youtube.com/@LovosisTechnology" className="hover:text-black">Lovosis Technology Private Limited</a>}
             bgColor="bg-gray-100"
             textColor="text-black"  
           />
@@ -206,7 +206,7 @@ export default function Contact() {
             <h2 className="text-2xl font-semibold mb-6 text-black">Find Us</h2>
             <div className="w-full h-[500px] rounded-xl overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.4851882392584!2d77.53277827516318!3d13.068673887276683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae23ee22c0d0d9%3A0x7c75d6374c699d3e!2s4-72%2F2%2C%201st%20Main%20Rd%2C%20Lakshmipura%2C%20Abbigere%2C%20Bengaluru%2C%20Karnataka%20560090!5e0!3m2!1sen!2sin!4v1710312671044!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d485.79688978525235!2d77.5332774060647!3d13.075396343941993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae23e28f4d4575%3A0x82fc68d725417776!2sLovosis%20Technology%20Private%20limited!5e0!3m2!1sen!2sin!4v1749798615082!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -232,7 +232,7 @@ const ContactCard = ({
 }: {
   icon: React.ReactNode;
   title: string;
-  content: string;
+  content: React.ReactNode;
   bgColor: string;
   textColor: string;
 }) => (
@@ -245,10 +245,9 @@ const ContactCard = ({
     <h3 className={`text-xl ${textColor} font-semibold text-center mb-2`}>
       {title}
     </h3>
-    <p
-      className="text-black text-center"
-      dangerouslySetInnerHTML={{ __html: content }}
-    ></p>
+    <div className="text-black text-center">
+      {content}
+    </div>
   </div>
 );
 
