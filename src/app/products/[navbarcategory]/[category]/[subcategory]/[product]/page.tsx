@@ -70,30 +70,30 @@ export default function ProductPage({
   useEffect(() => {
     fetchProduct();
 
-    const ws = new WebSocket(`${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/api/websocket`);
+    // const ws = new WebSocket(`${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/api/websocket`);
 
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.type === 'product_updated' && data.slug === resolvedParams.product) {
-        fetchProduct();
-      }
-    };
+    // ws.onmessage = (event) => {
+    //   const data = JSON.parse(event.data);
+    //   if (data.type === 'product_updated' && data.slug === resolvedParams.product) {
+    //     fetchProduct();
+    //   }
+    // };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-      const pollingInterval = setInterval(fetchProduct, 3000);
-      return () => clearInterval(pollingInterval);
-    };
+    // ws.onerror = (error) => {
+    //   console.error('WebSocket error:', error);
+    //   const pollingInterval = setInterval(fetchProduct, 3000);
+    //   return () => clearInterval(pollingInterval);
+    // };
 
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') fetchProduct();
-    };
+    // const handleVisibilityChange = () => {
+    //   if (document.visibilityState === 'visible') fetchProduct();
+    // };
     
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      ws.close();
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
+    // document.addEventListener('visibilitychange', handleVisibilityChange);
+    // return () => {
+    //   ws.close();
+    //   document.removeEventListener('visibilitychange', handleVisibilityChange);
+    // };
   }, [resolvedParams.product]);
 
   useEffect(() => {

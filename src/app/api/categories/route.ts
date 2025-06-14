@@ -3,7 +3,7 @@ import { connectDB } from '@/lib/db';
 import Category from '@/app/models/Category';
 import mongoose from 'mongoose';
 import NavbarCategory from '@/app/models/NavbarCategory';
-import { middleware } from '@/middleware/auth';
+import { checkAuth } from '@/lib/auth';
 
 export async function GET() {
   try {
@@ -22,15 +22,9 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     // Apply the auth middleware
-    const authResponse = await middleware(request);
-    if (authResponse) {
-      return authResponse;
-    }
-
+    await checkAuth(request);
     await connectDB();
     const data = await request.json();
-    
-    console.log('Received data:', data);
 
     // Convert navbarCategoryId to ObjectId if it's a string
     if (typeof data.navbarCategoryId === 'string') {

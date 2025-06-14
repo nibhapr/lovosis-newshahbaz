@@ -3,6 +3,7 @@ import { connectDB } from '@/lib/db';
 import Category from '@/app/models/Category';
 import File from '@/app/models/File';
 import { middleware } from '@/middleware/auth';
+import { checkAuth } from '@/lib/auth';
 
 export async function GET(
   request: Request,
@@ -34,6 +35,7 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
+      await checkAuth(request);
     // Apply the auth middleware
     const authResponse = await middleware(request);
     if (authResponse) {
@@ -85,37 +87,38 @@ export async function PUT(
   }
 }
 
-// export async function DELETE(
-//   request: Request,
-//   { params }: { params: { id: string } }
-// ) {
-//   try {
-//     await connectDB();
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    await checkAuth(request);
+    await connectDB();
     
-//     const category = await Category.findById(params.id);
+    const category = await Category.findById(params.id);
     
-//     if (!category) {
-//       return NextResponse.json(
-//         { error: 'Navbar Category not found' },
-//         { status: 404 }
-//       );
-//     }
+    if (!category) {
+      return NextResponse.json(
+        { error: 'Navbar Category not found' },
+        { status: 404 }
+      );
+    }
     
-//     await Category.findByIdAndDelete(params.id);
+    await Category.findByIdAndDelete(params.id);
     
-//     if (category.image && category.image.startsWith('/api/files/')) {
-//       const fileId = category.image.split('/').pop();
-//       if (fileId) {
-//         await File.findByIdAndDelete(fileId);
-//       }
-//     }
+    if (category.image && category.image.startsWith('/api/files/')) {
+      const fileId = category.image.split('/').pop();
+      if (fileId) {
+        await File.findByIdAndDelete(fileId);
+      }
+    }
     
-//     return NextResponse.json({ success: true });
-//   } catch (error) {
-//     console.error('Database error:', error);
-//     return NextResponse.json(
-//       { error: 'Failed to delete category' },
-//       { status: 500 }
-//     );
-//   }
-// } 
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete category' },
+      { status: 500 }
+    );
+  }
+} 

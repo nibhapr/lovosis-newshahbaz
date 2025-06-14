@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { IoAddOutline, IoTrashOutline, IoCreateOutline, IoSearchOutline, IoChevronDownOutline } from 'react-icons/io5';
 import type { NavbarCategory, Category, Subcategory, Product } from '@/types/shop';
 import ImageUpload from '@/app/Components/shared/ImageUpload';
+import Swal from 'sweetalert2'
 
 export default function ProductManager() {
     const [navbarCategories, setNavbarCategories] = useState<NavbarCategory[]>([]);
@@ -12,6 +13,7 @@ export default function ProductManager() {
     const [subcategories, setSubcategories] = useState<Subcategory[]>([]);
     const [products, setProducts] = useState<Product[]>([]);
     const [formData, setFormData] = useState({
+        _id: '',
         name: '',
         images: [''],
         navbarCategoryId: '',
@@ -51,7 +53,7 @@ export default function ProductManager() {
         e.preventDefault();
         try {
             const response = await fetch('/api/products', {
-                method: 'POST',
+                method: isEditing ? "PUT" : "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -65,6 +67,13 @@ export default function ProductManager() {
 
             const result = await response.json();
             console.log('Product saved:', result);
+            resetForm();
+            setIsEditing(false);
+            Swal.fire({
+                icon: 'success',
+                title: isEditing ? 'Product Updated' : 'Product Added',
+                timer: 1500,
+            })
             // Handle success (e.g., show a success message or redirect)
         } catch (error) {
             console.error('Error saving product:', error);
@@ -74,6 +83,7 @@ export default function ProductManager() {
 
     const resetForm = () => {
         setFormData({
+            _id: '',
             name: '',
             images: [''],
             navbarCategoryId: '',
@@ -277,11 +287,9 @@ export default function ProductManager() {
     };
 
     const findDuplicates = (product: Product) => {
-        const words = product.name.toLowerCase().split(/\s+/);
         return products.filter(p => {
             if (p._id === product._id) return false;
-            const otherWords = p.name.toLowerCase().split(/\s+/);
-            return words.some(word => otherWords.includes(word));
+            return p.name.toLowerCase() === product.name.toLowerCase()
         });
     };
 
@@ -332,6 +340,7 @@ export default function ProductManager() {
         }
 
         setFormData({
+            _id: product._id,
             name: product.name,
             images: product.images || [''],
             navbarCategoryId: typeof navbarCategoryId === 'string' ? navbarCategoryId : navbarCategoryId?._id || '',

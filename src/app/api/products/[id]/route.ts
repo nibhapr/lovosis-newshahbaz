@@ -4,6 +4,8 @@ import Product from '@/app/models/Product';
 import mongoose from 'mongoose';
 import File from '@/app/models/File';
 import jwt from 'jsonwebtoken';
+import { cookies } from 'next/headers';
+import { checkAuth } from '@/lib/auth';
 
 export async function GET(
   request: Request,
@@ -34,6 +36,8 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
+    console.log('PUT request received for product ID:', params.id);
+    await checkAuth(request);
     await connectDB();
     let data;
     try {
@@ -44,7 +48,7 @@ export async function PUT(
         { status: 400 }
       );
     }
-
+    // Check if data is empty
     if (!data || Object.keys(data).length === 0) {
       return NextResponse.json(
         { error: 'Request body cannot be empty' },
@@ -119,37 +123,38 @@ export async function PUT(
   }
 }
 
-// export async function DELETE(
-//   request: Request,
-//   { params }: { params: { id: string } }
-// ) {
-//   try {
-//     await connectDB();
-//     const { id } = params;
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    await checkAuth(request);
+    await connectDB();
+    const { id } = params;
 
-//     // Validate the ObjectId
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//       return NextResponse.json(
-//         { error: 'Invalid product ID format' },
-//         { status: 400 }
-//       );
-//     }
+    // Validate the ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json(
+        { error: 'Invalid product ID format' },
+        { status: 400 }
+      );
+    }
 
-//     const product = await Product.findById(id);
-//     if (!product) {
-//       return NextResponse.json(
-//         { error: 'Product not found' },
-//         { status: 404 }
-//       );
-//     }
+    const product = await Product.findById(id);
+    if (!product) {
+      return NextResponse.json(
+        { error: 'Product not found' },
+        { status: 404 }
+      );
+    }
 
-//     await Product.findByIdAndDelete(id);
-//     return NextResponse.json({ message: 'Product deleted successfully' });
-//   } catch (error) {
-//     console.error('Error deleting product:', error);
-//     return NextResponse.json(
-//       { error: error instanceof Error ? error.message : 'Failed to delete product' },
-//       { status: 500 }
-//     );
-//   }
-// }
+    await Product.findByIdAndDelete(id);
+    return NextResponse.json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Failed to delete product' },
+      { status: 500 }
+    );
+  }
+}

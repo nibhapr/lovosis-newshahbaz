@@ -110,9 +110,9 @@ const Navbar = () => {
   const fetchData = useCallback(async () => {
     try {
       const [navbarResponse, categoriesResponse, subcategoriesResponse] = await Promise.all([
-        fetch('/api/navbarcategories', { cache: 'force-cache' }),
-        fetch('/api/categories', { cache: 'force-cache' }),
-        fetch('/api/subcategories', { cache: 'force-cache' })
+        fetch('/api/navbarcategories'),
+        fetch('/api/categories'),
+        fetch('/api/subcategories')
       ]);
 
       if (!navbarResponse.ok || !categoriesResponse.ok || !subcategoriesResponse.ok) {
@@ -124,7 +124,7 @@ const Navbar = () => {
         categoriesResponse.json(),
         subcategoriesResponse.json()
       ]);
-
+      // console.log(navbarData)
       // Format data efficiently
       const formattedData = navbarData.map((navbarCategory: any) => ({
         id: navbarCategory._id || '',
