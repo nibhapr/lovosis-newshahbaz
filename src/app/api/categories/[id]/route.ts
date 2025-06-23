@@ -33,15 +33,8 @@ export async function GET(
 export async function PUT(
   request: Request,
   { params }: { params: { id: string } }
-) {
-  try {
-      await checkAuth(request);
-    // Apply the auth middleware
-    const authResponse = await middleware(request);
-    if (authResponse) {
-      return authResponse;
-    }
-
+) {  
+    await checkAuth(request);
     await connectDB();
     const { id } = params;
     const data = await request.json();
@@ -78,13 +71,6 @@ export async function PUT(
     }
     
     return NextResponse.json(category);
-  } catch (error) {
-    console.error('Database error:', error);
-    return NextResponse.json(
-      { error: 'Failed to update category' },
-      { status: 500 }
-    );
-  }
 }
 
 export async function DELETE(
