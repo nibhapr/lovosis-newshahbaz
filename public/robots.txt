@@ -1,0 +1,7 @@
+# Global rules
+User-agent: *
+Disallow: /admin
+Disallow: /auth/login
+
+# Sitemaps
+Sitemap: https://lovosis.in/sitemap.xml
