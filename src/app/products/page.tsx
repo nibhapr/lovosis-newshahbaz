@@ -54,7 +54,7 @@ export default async function ShopPage() {
 
   return (
     <div className="container mx-auto px-4 py-12 bg-white min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-center text-black">Product Categories ({navbarCategories.length})</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-black">Product Categories </h1>
 
       {/* Desktop View */}
       <div className="hidden sm:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
