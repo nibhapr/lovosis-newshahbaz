@@ -1,20 +1,34 @@
 import React from 'react';
 import Image from 'next/image';
 import iso from '../../../public/navbarlogo/iso.png';
+import iso9 from '../../../public/navbarlogo/ISO9.png'
 import ce from '../../../public/navbarlogo/CE.png';
 import si from '../../../public/navbarlogo/SI.png';
 import sk from '../../../public/navbarlogo/SK.png';
 import zed from '../../../public/navbarlogo/zed.png';
 import gmp from '../../../public/navbarlogo/gmp.png';
+import iso900 from "../../../public/navbarlogo/iso900.png";
+import iso14001 from "../../../public/navbarlogo/iso14001.png";
+import afist from "../../../public/navbarlogo/AFIST.png";
+import spc from "../../../public/navbarlogo/SPC.png";
+import iso45001 from "../../../public/navbarlogo/iso45001.png"
 
 const LogoScroll: React.FC = () => {
   const logos = [
-    { src: iso, alt: 'ISO Logo' },
-    { src: ce, alt: 'CE Logo' },
+    { src: zed, alt: 'Zed Logo' },
     { src: si, alt: 'SI Logo' },
     { src: sk, alt: 'SK Logo' },
-    { src: zed, alt: 'Zed Logo' },
-    { src: gmp, alt: 'GMP Logo' }
+    { src: gmp, alt: 'GMP Logo' },
+    { src: ce, alt: 'CE Logo' },
+    { src: afist, alt: 'AFIST'},
+    { src: spc, alt: 'SPC'},
+    { src: iso, alt: 'ISO Logo' },
+    { src: iso9, alt: 'ISO1002'},
+    { src: iso900, alt: 'ISO900'},
+    { src: iso14001, alt: 'ISO14001'},
+    { src: iso45001, alt: 'ISO45001'}
+
+
   ];
 
   // Duplicate logos for seamless scrolling
@@ -100,7 +114,7 @@ const LogoScroll: React.FC = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-720px);
+            transform: translateX(-1440px);
           }
         }
         
@@ -109,7 +123,7 @@ const LogoScroll: React.FC = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-720px);
+            transform: translateX(-1440px);
           }
         }
         
@@ -118,20 +132,20 @@ const LogoScroll: React.FC = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-570px);
+            transform: translateX(-1140px);
           }
         }
                 
         .animate-scroll-desktop {
-          animation: scroll-desktop 14s linear infinite;
+          animation: scroll-desktop 20s linear infinite;
         }
         
         .animate-scroll-tablet {
-          animation: scroll-tablet 12s linear infinite;
+          animation: scroll-tablet 18s linear infinite;
         }
         
         .animate-scroll-mobile {
-          animation: scroll-mobile 10s linear infinite;
+          animation: scroll-mobile 15s linear infinite;
         }
       `}</style>
     </div>
