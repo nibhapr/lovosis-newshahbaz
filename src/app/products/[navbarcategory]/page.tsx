@@ -143,7 +143,77 @@ export default async function NavbarCategoryPage({
           </div>
         )}
 
-      
+        {categories.length == 0 && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold mb-6 text-black">
+              Products 
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {uncategorizedProducts.map((prod) => (
+                <Link
+                  key={prod._id as string}
+                  href={`/products/${params.navbarcategory}/_/_/${prod.slug}`}
+                  className="group"
+                >
+                  <div className="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 group-hover:shadow-lg group-hover:-translate-y-1 border border-gray-200">
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={prod.images?.[0] || '/images/placeholder.jpg'}
+                        alt={prod.name}
+                        fill
+                        unoptimized={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h2 className="text-xl font-semibold mb-2 text-black">{prod.name}</h2>
+                      {prod.description && (
+                        <p className="text-gray-600">{prod.description}</p>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* {uncategorizedProducts.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-semibold mb-6 text-black">
+              Other Products 
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {uncategorizedProducts.map((product) => (
+                <Link
+                  key={product._id as string}
+                  href={`/products/${params.navbarcategory}/_/_/${product.slug}`}
+                  className="group"
+                >
+                  <div className="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 group-hover:shadow-lg group-hover:-translate-y-1 border border-gray-200">
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={product.images?.[0] || '/images/placeholder.jpg'}
+                        alt={product.name}
+                        fill
+                        unoptimized={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h2 className="text-xl font-semibold mb-2 text-black">{product.name}</h2>
+                      {product.description && (
+                        <p className="text-gray-600">{product.description}</p>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )} */}
       </div>
     </>
   );
